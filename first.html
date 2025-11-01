@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Engineering - University of Barishal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        
+        :root {
+            --primary-blue: #1e3a8a; 
+            --secondary-blue-light: #697AE8; 
+            --accent-yellow: #f59e0b; 
+            --text-dark: #1f2937;
+            --text-light: #f3f4f6;
+            --bg-light: #f9fafb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        
+        .top-strip {
+            background-color: var(--secondary-blue-light); 
+            color: white;
+            padding: 0.75rem 0;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .university-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .main-university-name {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 640px) {
+            .main-university-name {
+                font-size: 1rem;
+            }
+        }
+
+        .contact-login-group {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .contact-login-group {
+                gap: 0.75rem;
+            }
+        }
+
+        .top-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .top-link:hover {
+            color: var(--accent-yellow);
+        }
+        
+        
+        .header {
+            background-color: var(--primary-blue);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            height: 3.5rem;
+            position: relative; 
+        }
+        
+        
+        .logo-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5rem; 
+            position: absolute; 
+            left: 50%;
+            transform: translate(-50%, 0);
+            top: -2.5rem; 
+            z-index: 1010;
+        }
+
+        .faculty-logo {
+            width: 80px; 
+            height: 80px;
+            object-fit: contain;
+            border-radius: 50%;
+            background-color: white; 
+            padding: 2px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+           
+            display: none;
+            flex-grow: 1;
+            justify-content: space-around; 
+            font-size: 0.875rem;
+            font-weight: 600;
+            width: 100%; 
+            position: relative; 
+            z-index: 1005;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-menu {
+                display: flex;
+                padding-left: 0.5rem; 
+                padding-right: 0.5rem;
+            }
+        }
+        
+        
+        .menu-split {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item:hover {
+            background-color: white;
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        @media (min-width: 1024px) {
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        .mobile-nav {
+            background-color: #1a3279; 
+            padding: 1rem 0;
+            display: none; 
+            position: absolute;
+            width: 100%;
+            z-index: 999;
+        }
+
+        .mobile-nav.open {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--primary-blue);
+        }
+
+        
+        .notice-bar {
+            background-color: var(--secondary-blue-light);
+            color: white;
+            padding: 0.5rem 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .notice-label {
+            background-color: rgba(0, 0, 0, 0.2);
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+        }
+
+        .notice-marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            flex-grow: 1;
+            padding: 0 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .notice-marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+            margin: 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        
+       
+        .departments-grid {
+            display: grid;
+            gap: 2rem; 
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .departments-grid {
+                
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .departments-grid {
+                
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+
+        .dept-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .dept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dept-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dept-content {
+            padding: 1.5rem;
+        }
+
+        .dept-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .dept-content p {
+            color: #4b5563;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            min-height: 3rem; 
+        }
+
+        .dept-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-yellow);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .dept-link:hover {
+            background-color: #d97706; 
+        }
+        
+        
+
+        .hero {
+            position: relative;
+            height: 40vh;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            background-color: #374151;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 0.75rem;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            margin-top: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-yellow);
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            padding-bottom: 0.25rem;
+            border-bottom: 4px solid var(--accent-yellow);
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+
+        .dean-section {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
+        }
+        @media (min-width: 1024px) {
+            .dean-section {
+                flex-direction: row;
+                text-align: left;
+            }
+        }
+
+        
+        .dean-photo {
+            width: 160px;
+            height: 192px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+        }
+        
+        .footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding-top: 3rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .logo-placeholder {
+            width: 2.5rem; 
+            height: 2.5rem; 
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary-blue-light);
+        }
+
+        
+        .highlights-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+        @media (min-width: 768px) {
+            .highlights-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .highlight-card {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-card.research { background-color: #059669; } 
+        .highlight-card.administration { background-color: #1d4ed8; } 
+        .highlight-card.notice { background-color: #dc2626; } 
+        
+        .highlight-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .highlight-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .highlight-link {
+            color: var(--accent-yellow);
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        /* Footer Grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-link, .contact-info {
+            display: flex;
+            align-items: flex-start;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-yellow);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+        .social-links a {
+            color: white;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--accent-yellow);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="top-strip">
+        <div class="container top-bar-content">
+            <div class="university-title-group">
+                <div class="logo-placeholder">UB</div>
+                <span class="main-university-name">UNIVERSITY OF BARISHAL</span>
+            </div>
+            
+            <div class="contact-login-group">
+                <a href="#" class="top-link">
+                    <span style="font-size: 1rem; margin-right: 0.25rem;">&#9990;</span>
+                    CONTACT US
+                </a>
+                <a href="#" class="top-link">
+                    <span style="font-size: 1rem; margin-right: 0.25rem;">&#x25D0;</span>
+                    LOGIN
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <header class="header">
+        <div class="container navbar">
+            <div class="logo-group">
+                <img src="https://www.bu.ac.bd/logo/main-logo-rounded.png" 
+                    alt="Barishal University Logo" 
+                    class="faculty-logo"
+            
+                >
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="menu-split">
+                    <a href="#home" class="nav-item">Home</a>
+                    <a href="#about" class="nav-item">About</a>
+                    <a href="#academics" class="nav-item">Academics</a>
+                    <a href="#administration" class="nav-item">Administration</a>
+                    <a href="#faculties" class="nav-item">Faculties</a>
+                </div>
+                
+                <div class="menu-split">
+                    <a href="#publication" class="nav-item">Publication</a>
+                    <a href="#research" class="nav-item">Research</a>
+                    <a href="#notice" class="nav-item">Notice</a>
+                    <a href="#gallery" class="nav-item">Gallery</a>
+                    <a href="#links" class="nav-item">Links</a>
+                </div>
+            </nav>
+
+            <button class="mobile-menu-button" id="mobile-menu-toggle">
+                <span style="font-size: 1.5rem;">&#9776;</span>
+            </button>
+        </div>
+        <div class="mobile-nav" id="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#academics">Academics</a>
+            <a href="#administration">Administration</a>
+            <a href="#faculties">Faculties</a>
+            <a href="#publication">Publication</a>
+            <a href="#research">Research</a>
+            <a href="#notice">Notice</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#links">Links</a>
+        </div>
+    </header>
+
+    <div class="notice-bar">
+        <div class="notice-label">NOTICE UPDATE</div>
+        <div class="notice-marquee">
+            <p>
+                বরিশাল বিশ্ববিদ্যালয় কেন্দ্রীয় ছাত্র সংসদ ও হল সংসদ সংবিধির খসড়া ও এ বিষয়ে মতামত প্ররেজিস্ট্রার (ভারপ্রাপ্ত) হিসেবে দায়িত্ব প্রদান সংক্রান্ত অফিস আদেশ। &nbsp; | &nbsp; 
+                OFFICE ORDER (CHINA) OF MD. HARUN-OR-ROSID। &nbsp; | &nbsp; 
+                OFFICE ORDER OF DR. MD LOKMAN HOSSEN। &nbsp; | &nbsp;
+                বিশ্ববিদ্যালয়ের কেন্দ্রীয় জুয়েলারি অ্যান্ড কুটির শিল্প প্রশিক্ষণ কার্যক্রম শুরু। &nbsp; | &nbsp; 
+                ক্যাম্পাস রিক্রুটমেন্ট ২০২১-এর বিজ্ঞপ্তি প্রকাশ। &nbsp; | &nbsp; 
+                কোলকাতা (ভারত) হিস্টোরি হেরিটেজ ট্যুরের স্থান সংক্রাস্ত ঘোষণা। &nbsp; | &nbsp; 
+                **English Translation:** University Central Jewellery and Cottage Industry Training Program begins. &nbsp; | &nbsp; 
+                Campus Recruitment 2021 notice published. &nbsp; | &nbsp; 
+                Announcement regarding the venue for Kolkata (India) History Heritage Tour. &nbsp; | &nbsp;
+                **LATEST ANNOUNCEMENT:** The final semester exam schedule is now available under the Notice section. Click to check details!
+            </p>
+        </div>
+    </div>
+
+    <main>
+        <section id="home" class="hero">
+            <img src="https://www.bu.ac.bd/uploads/department/2025-02-25-c0182b_183512757.jpg" 
+                alt="University of Barishal Engineering Building" 
+                class="hero-bg"
+                onerror="this.style.backgroundColor='#a0764e'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+            >
+            <div class="hero-content">
+                <h1 class="hero-title">Faculty of Engineering</h1>
+                <p class="hero-subtitle">University of Barishal</p>
+                <div style="margin-top: 0.5rem; font-size: 0.875rem; color: #e5e7eb;">
+                    <a href="#" style="text-decoration: none; color: inherit;">Home</a> &gt; <span>Faculty of Engineering</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="container text-center">
+                <h2 class="section-title">Message from the Faculty Dean</h2>
+                <div class="dean-section">
+                    <div class="dean-photo-container">
+                        <img src="https://www.bu.ac.bd/uploads/faculty_dean/2025-10-26-e9d0aa_917161612.jpeg" 
+                            alt="Dean's Photo" 
+                            class="dean-photo"
+                            onerror="this.style.backgroundColor='#1f2937'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+                        >
+                    </div>
+                    <div class="dean-details">
+                        <h3>Dr. Rahat Hossain Faisal</h3>
+                        <p class="role">Dean, Faculty of Engineering</p>
+                        <p class="message">
+                            Welcome to the Faculty of Engineering at the University of Barishal. Our faculty is dedicated to fostering an environment of academic excellence, innovation, and research. We are proud to offer cutting-edge programs across various disciplines, preparing our students to be leaders and problem-solvers in the rapidly evolving technological landscape of Bangladesh and beyond. Our commitment lies in providing quality education, state-of-the-art facilities, and a supportive learning community. We look forward to your journey with us as we build a brighter future through engineering and technology.
+                        </p>
+                        <a href="#" class="read-more">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="academics" style="background-color: #f3f4f6;" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title">Our Departments</h2>
+                </div>
+                <div class="departments-grid">
+                    
+                    <div class="dept-card">
+                        <img src="https://www.bu.ac.bd/uploads/department/2025-02-25-c0182b_183512757.jpg" 
+                            alt="CSE Department" 
+                            class="dept-image"
+                            onerror="this.style.backgroundColor='#5b21b6'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+                        >
+                        <div class="dept-content">
+                            <h3>Computer Science & Engineering (CSE)</h3>
+                            <p>Focuses on algorithms, programming, and cutting-edge software development.</p>
+                            <a href="#" class="dept-link">View Website</a>
+                        </div>
+                    </div>
+
+                    <div class="dept-card">
+                        <img src="https://www.scient.ac.in/uploads/departments/6900f0abec2fc281025eee.jpg"
+                            alt="EEE Department" 
+                            class="dept-image"
+                            onerror="this.style.backgroundColor='#059669'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+                        >
+                        <div class="dept-content">
+                            <h3>Electrical & Electronic Engineering (EEE)</h3>
+                            <p>Study of electricity, electronics, and electromagnetism for power systems.</p>
+                            <a href="#" class="dept-link">View Website</a>
+                        </div>
+                    </div>
+
+                    <div class="dept-card">
+                        <img src="https://thumbs.dreamstime.com/z/ict-information-communication-technology-concept-virtual-screen-ict-information-communication-technology-concept-164820574.jpg?ct=jpeg" 
+                            alt="ICT Department" 
+                            class="dept-image"
+                            onerror="this.style.backgroundColor='#c026d3'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+                        >
+                        <div class="dept-content">
+                            <h3>Information & Communication Technology (ICT)</h3>
+                            <p>Integration of telecommunication, computer networking, and signal processing.</p>
+                            <a href="#" class="dept-link">View Website</a>
+                        </div>
+                    </div>
+
+                    <div class="dept-card">
+                        <img src="E:\DowenLoad\Electronics Projects for ECE & EEE Engineering Students.jpeg"
+                            alt="ECE Department" 
+                            class="dept-image"
+                            onerror="this.style.backgroundColor='#f59e0b'; this.src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';"
+                        >
+                        <div class="dept-content">
+                            <h3>Electronics & Communication Engineering (ECE)</h3>
+                            <p>Deals with the design of electronic circuits, devices, and communication systems.</p>
+                            <a href="#" class="dept-link">View Website</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="highlights-grid">
+                    <div id="research" class="highlight-card research">
+                        <h3 style="margin-bottom: 0.5rem;">Research & Innovation</h3>
+                        <p>Explore our faculty's ongoing projects, publications, and state-of-the-art research facilities.</p>
+                        <a href="#research" class="highlight-link">See Details</a>
+                    </div>
+                    <div id="administration" class="highlight-card administration">
+                        <h3 style="margin-bottom: 0.5rem;">Administration & Resources</h3>
+                        <p>Access essential administrative information, forms, and institutional policies.</p>
+                        <a href="#administration" class="highlight-link">View Structure</a>
+                    </div>
+                    <div id="notice" class="highlight-card notice">
+                        <h3 style="margin-bottom: 0.5rem;">Latest Notices</h3>
+                        <p>Official circulars, exam schedules, and important announcements for students and faculty.</p>
+                        <a href="#notice" class="highlight-link">Check Board</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div>
+                    <h4 class="footer-title">University of Barishal</h4>
+                    <p class="contact-info">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1rem; height: 1rem; margin-right: 0.5rem; margin-top: 0.15rem; flex-shrink: 0; fill: currentColor;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>Karnokathi, Barishal-8254, Bangladesh</span>
+                    </p>
+                    <p class="contact-info">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1rem; height: 1rem; margin-right: 0.5rem; margin-top: 0.15rem; flex-shrink: 0; fill: currentColor;"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.12-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.2c.28-.28.36-.67.24-1.02C8.75 6.45 8.55 5.25 8.55 4c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2 0 16 14 19 19 19h1.5c1.1 0 2-.9 2-2V17.5c0-1.1-.9-2-2-2z"/></svg>
+                        <span>Phone: 0244821020-29</span>
+                    </p>
+                    <p class="contact-info">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1rem; height: 1rem; margin-right: 0.5rem; margin-top: 0.15rem; flex-shrink: 0; fill: currentColor;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <span>Email: registrar@bu.ac.bd</span>
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Academics & Research</h4>
+                    <a href="#academics" class="footer-link">Academic Programs</a>
+                    <a href="#publication" class="footer-link">Journal Publication</a>
+                    <a href="#research" class="footer-link">Research Groups</a>
+                    <a href="#" class="footer-link">Academic Calendar</a>
+                </div>
+
+                <div id="gallery">
+                    <h4 class="footer-title">Faculty & Resources</h4>
+                    <a href="#faculties" class="footer-link">Faculty Members</a>
+                    <a href="#administration" class="footer-link">Administrative Staff</a>
+                    <a href="#gallery" class="footer-link">Photo Gallery</a>
+                    <a href="#" class="footer-link">Admissions</a>
+                </div>
+
+                <div id="links">
+                    <h4 class="footer-title">Important Links</h4>
+                    <a href="#" class="footer-link">University Portal</a>
+                    <a href="#" class="footer-link">UGC Website</a>
+                    <a href="#" class="footer-link">Career Opportunities</a>
+                    <a href="#" class="footer-link">Sitemap</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">
+                    &copy; 2024 University of Barishal, Faculty of Engineering. All Rights Reserved.
+                </p>
+                <div class="social-links">
+                    <a href="#" title="University Website">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem; height: 1.25rem; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.41-7-7.43 0-2.88 1.5-5.43 3.96-6.84L9 12l.94 2.82 2.82-.94 2.82 2.82-3.99 3.99c-.74.74-1.84 1.14-2.95 1.14zM16 12c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
+                    </a>
+                    <a href="#" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem; height: 1.25rem; fill: currentColor;"><path d="M14.5 5H17V2.5h-2.5c-2.3 0-3.5 1.7-3.5 3.5V8H9v3h2v10h4V11h3l.5-3H15V6c0-.5.5-1 1-1h.5z"/></svg>
+                    </a>
+                    <a href="#" title="Twitter">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1.25rem; height: 1.25rem; fill: currentColor;"><path d="M22 4.02c-.7-.3-1.45-.5-2.24-.6.8.4 1.4 1.2 1.7 2-.7-.4-1.5-.7-2.3-.9.7-1.4 2-2 3.4-2.2-.7-.2-1.4-.4-2.1-.4-2.7 0-4.8 2.2-4.8 4.8 0 .4.1.8.2 1.2-4-.2-7.5-2.1-9.8-5-.4.7-.6 1.5-.6 2.4 0 1.6.8 3.1 2 4-.7 0-1.4-.2-2-.5v.1c0 2.2 1.6 4 3.7 4.4-.4.1-.9.2-1.3.2-.3 0-.6 0-.8-.1.6 1.8 2.2 3.1 4 3.1-1.5 1.2-3.4 1.9-5.4 1.9-.3 0-.7 0-1-.1C4.3 20.3 6.5 21 8.8 21c7.2 0 11.2-5.7 11.2-11.2V9.8c.7-.5 1.3-1.1 1.8-1.8z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('open');
+                    
+                    
+                    const icon = menuToggle.querySelector('span');
+                    if (mobileMenu.classList.contains('open')) {
+                        icon.innerHTML = '&#x2715;'; 
+                    } else {
+                        icon.innerHTML = '&#9776;'; 
+                    }
+                });
+
+                
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('open');
+                        menuToggle.querySelector('span').innerHTML = '&#9776;';
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
